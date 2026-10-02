@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette */
+  --color-cream: #f8f4ec;
+  --color-cream-deep: #efe6d6;
+  --color-cream-mist: #f3ecdf;
+  --color-dawn: #a7c7e7;
+  --color-dawn-soft: #dceaf6;
+  --color-dusk: #f4a261;
+  --color-dusk-soft: #fbe2cb;
+  --color-midnight: #1b2541;
+  --color-midnight-soft: #2b3961;
+  --color-brown: #8b5e3c;
+  --color-brown-dark: #6b4528;
+  --color-ink: #222222;
+  --color-ink-soft: #4a4540;
+  --color-photo: #e7e5e1;
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.5rem;
+
+  --shadow-soft: 0 10px 30px -12px rgb(27 37 65 / 0.18);
+  --shadow-lift: 0 22px 45px -18px rgb(27 37 65 / 0.28);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-twinkle: twinkle 3.5s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
+  }
+  @keyframes drift {
+    from { transform: translateX(-30vw); }
+    to { transform: translateX(110vw); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 100, "WONK" 0;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-brown);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+  ::selection {
+    background: var(--color-dusk-soft);
+  }
+}
+
+/* Clouds drifting across the hero sky. Duration/delay are set inline per cloud. */
+.cloud-drift {
+  left: 0;
+  animation-name: drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  /* Without motion, park the clouds at fixed spots across the sky. */
+  .cloud-drift { animation: none; left: var(--rest-x, 0); }
+}

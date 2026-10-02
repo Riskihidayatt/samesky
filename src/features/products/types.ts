@@ -1,0 +1,21 @@
+export type CollectionId = "everyday" | "dusk" | "midnight" | "little-sky";
+
+export type GarmentKind = "tee" | "polo" | "crewneck" | "hoodie";
+
+export type ProductColor = {
+  name: string;
+  hex: string;
+  /** Product photos for this colour. Without them a tinted garment placeholder is shown. */
+  images?: { front: string; back: string };
+};
+
+export type Product = {
+  id: string;
+  name: string;
+  collection: CollectionId;
+  kind: GarmentKind;
+  price: number;
+  badge?: "New" | "Best Seller";
+  colors: ProductColor[];
+  note?: string;
+};

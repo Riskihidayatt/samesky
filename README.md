@@ -1,0 +1,69 @@
+# SAMESKY — Landing Page
+
+> *Different streets, same sky.*
+
+Landing page untuk brand pakaian lokal SAMESKY. Dibangun dengan **Next.js 16 (App Router) + TypeScript + Tailwind CSS v4 + Framer Motion**, icon dari **lucide-react**.
+
+## Menjalankan
+
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build && npm start   # mode produksi
+```
+
+Cek kualitas:
+
+```bash
+npm run lint
+npm run typecheck
+npm test           # Vitest + Testing Library
+```
+
+## Struktur file
+
+```
+src/
+├── app/
+│   ├── layout.tsx            # font (Fraunces + Plus Jakarta Sans), metadata, skip link, Providers
+│   ├── page.tsx              # urutan section landing page
+│   ├── not-found.tsx         # halaman 404 dengan maskot
+│   ├── loading.tsx           # loading state dengan maskot
+│   ├── globals.css           # design token (@theme), animasi, prefers-reduced-motion
+│   ├── icon.svg              # favicon
+│   └── api/newsletter/route.ts   # POST /api/newsletter (validasi email)
+├── features/                 # satu folder per section/fitur
+│   ├── hero/                 # Hero + SkyBackdrop (langit ikut jam lokal)
+│   ├── highlights/           # 4 keunggulan
+│   ├── collections/          # 4 kartu koleksi
+│   ├── products/             # data produk, ProductCard, BestSellers, GarmentPlaceholder
+│   ├── story/                # Brand Story + ilustrasi maskot berjalan
+│   ├── lookbook/  community/  testimonials/
+│   ├── newsletter/           # Sky Club + form
+│   ├── cart/                 # reducer, context (localStorage), drawer + empty state
+│   ├── search/               # dialog pencarian produk
+│   └── sky/                  # SkyProvider (fase pagi / senja / malam)
+└── shared/
+    ├── components/           # Navbar, Footer, Mascot, Reveal, CloudDivider, Logo, dll.
+    ├── config/               # site.ts (kontak, sosmed, menu), mascot.ts (registry gambar maskot)
+    ├── hooks/                # useScrolled, useModal (Escape, focus trap, scroll lock)
+    └── lib/                  # format Rupiah, sky phase, validasi email, cn()
+public/
+├── mascot/                   # PLACEHOLDER maskot: wave, walk, sleep, gaze (.svg)
+└── images/products/          # foto produk (depan/belakang) dari mockup
+```
+
+## Mengganti aset placeholder
+
+| Aset | Cara ganti |
+|---|---|
+| **Maskot** | Taruh file asli (PNG/WebP transparan disarankan) di `public/mascot/`, lalu ubah `src` di `src/shared/config/mascot.ts`. Pose: `wave` (Waving), `walk` (Walking), `sleep` (Dreaming), `gaze` (Sunset Watching). |
+| **Logo** | `src/shared/components/Logo.tsx`, saat ini berupa wordmark teks. |
+| **Produk** | `src/features/products/products.data.ts`. Warna tanpa `images` otomatis memakai ilustrasi siluet berwarna. |
+| **Lookbook / Community** | Tambahkan `src` pada tiap entri di `Lookbook.tsx` / `Community.tsx`; tanpa `src` tampil placeholder gradien. |
+| **Kontak & sosmed** | `src/shared/config/site.ts` (nomor WhatsApp masih placeholder). |
+
+## Catatan
+
+- Newsletter API hanya memvalidasi email dan belum menyimpan ke mana pun (lihat TODO di `route.ts`).
+- Checkout di drawer keranjang belum terhubung (versi demo).
