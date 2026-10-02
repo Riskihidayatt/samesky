@@ -38,6 +38,7 @@
 | 404 & loading dengan maskot | Done | |
 
 ## 5. Yang sedang dikerjakan sesi ini
+- Sesi 5: maskot HD (EDSR 4x). Hero: pose ikut fase langit (pagi=wave, senja=gaze/Sunset Watching, malam=sleep/Dreaming) via `phasePose` di `Hero.tsx`; matahari/bulan CSS di `SkyBackdrop` disembunyikan saat senja & malam karena artwork sudah punya sendiri. `CloudDivider` sekarang digenerate (bump merata 0..1440). 57 test lulus.
 - Sesi 4: maskot placeholder SVG diganti potongan resmi dari character sheet (`public/mascot/*.webp`, latar transparan, glow dipertahankan sebagai semi-transparan). Logo = kepala maskot melambai (`public/brand/logo-mark.webp`) + wordmark; favicon `src/app/icon.png`. Registry `mascot.ts` sekarang menyimpan width/height asli tiap pose.
 - Sesi 3: perbaikan presisi: semua foto produk diseragamkan, kartu produk selalu menyediakan baris catatan agar harga/swatch sejajar, carousel New Arrivals dikunci ke lebar container (4 kartu pas), placeholder siluet diganti. 54 test lulus.
 - Sesi 2: tambah 5 produk baru (Sky Friends Camp Shirt, Mega Mendung Shirt, Sunrise Linen Shirt, Under the Same Sky Tee, For New Beginnings Tee) + section New Arrivals. 52 test lulus.
@@ -45,7 +46,7 @@
 - Next step: foto lookbook/community asli, sambungkan newsletter ke penyedia email, checkout.
 
 ## 6. Known issues / hutang teknis
-- Maskot sudah artwork resmi (dipotong dari character sheet user, ~300px). Resolusi masih rendah untuk hero di layar retina; minta ekspor 2–3x bila ada. Prioritas: rendah.
+- Maskot = artwork resmi dari character sheet (~300px per pose) yang di-upscale 4x dengan model super-resolution EDSR (OpenCV dnn_superres, dijalankan di luar repo), lalu dipotong latarnya (~950px). Bila user punya file asli resolusi tinggi, ganti saja file di `public/mascot/` + width/height di `mascot.ts`. Prioritas: rendah.
 - Lookbook & Community masih placeholder gradien (field `src` kosong). Prioritas: sedang.
 - Everyday Polo, Little Sky Kids Tee, Little Sky Family Set, dan beberapa swatch warna belum punya foto; tampil sebagai `GarmentPlaceholder` (lingkaran warna + maskot + label "Foto segera hadir"). Prioritas: sedang.
 - `/api/newsletter` belum ada rate limiting dan belum meneruskan email ke provider. Prioritas: sedang (wajib sebelum production).

@@ -6,9 +6,13 @@ import { useSky } from "@/features/sky/SkyProvider";
 import { buttonStyles } from "@/shared/components/button-styles";
 import { CloudDivider } from "@/shared/components/CloudDivider";
 import { Mascot } from "@/shared/components/Mascot";
+import type { MascotPose } from "@/shared/config/mascot";
 import { cn } from "@/shared/lib/cn";
 import type { SkyPhase } from "@/shared/lib/sky";
 import { SkyBackdrop } from "./SkyBackdrop";
+
+// Each sky phase has its own mascot pose from the character sheet.
+const phasePose: Record<SkyPhase, MascotPose> = { morning: "wave", dusk: "gaze", night: "sleep" };
 
 const phaseMeta: Record<SkyPhase, { label: string; greeting: string; icon: LucideIcon }> = {
   morning: { label: "Pagi", greeting: "Selamat pagi, penjelajah", icon: Sunrise },
@@ -121,14 +125,14 @@ export function Hero() {
           <div aria-hidden className="absolute bottom-2 h-16 w-[85%] rounded-[50%] bg-white/50 blur-2xl" />
           <AnimatePresence mode="wait">
             <motion.div
-              key={isNight ? "sleep" : "wave"}
+              key={phasePose[phase]}
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.92 }}
               transition={{ duration: 0.5 }}
               className="relative w-full"
             >
-              <Mascot pose={isNight ? "sleep" : "wave"} size={440} preload float className="h-auto w-full drop-shadow-xl" />
+              <Mascot pose={phasePose[phase]} size={440} preload float className="h-auto w-full drop-shadow-xl" />
             </motion.div>
           </AnimatePresence>
         </div>

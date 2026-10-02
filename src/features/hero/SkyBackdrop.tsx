@@ -44,8 +44,10 @@ export function SkyBackdrop({ phase }: { phase: SkyPhase }) {
         className={cn(
           "absolute right-[8%] top-[14%] h-28 w-28 rounded-full transition-all duration-1000 sm:h-36 sm:w-36",
           phase === "morning" && "bg-[#FFF3D6] opacity-80 shadow-[0_0_80px_30px_rgba(255,243,214,0.8)]",
-          phase === "dusk" && "translate-y-24 bg-[#F7B26B] shadow-[0_0_90px_40px_rgba(247,178,107,0.65)]",
-          phase === "night" && "h-20 w-20 bg-[#F6E7C1] shadow-[0_0_60px_18px_rgba(246,231,193,0.35)] sm:h-24 sm:w-24",
+          // The Sunset Watching artwork brings its own sun, so the sky sun steps aside at dusk.
+          phase === "dusk" && "translate-y-24 opacity-0",
+          // Dreaming brings its own crescent moon, so the sky moon steps aside at night too.
+          phase === "night" && "opacity-0",
         )}
       />
 
