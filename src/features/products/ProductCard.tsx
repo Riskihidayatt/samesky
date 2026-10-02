@@ -95,29 +95,32 @@ export function ProductCard({ product }: { product: Product }) {
         <h3 className="mt-1 font-sans text-base font-semibold text-midnight sm:text-lg">{product.name}</h3>
         {/* Always reserve the note line so price and swatches line up across a row. */}
         <p className="min-h-[1.375rem] text-sm leading-[1.375rem] text-ink-soft">{product.note ?? "\u00a0"}</p>
-        <p className="mt-1 font-semibold text-ink">{formatRupiah(product.price)}</p>
+        {/* Pinned to the bottom so price and swatches line up even when a name wraps to two lines. */}
+        <div className="mt-auto pt-1">
+          <p className="font-semibold text-ink">{formatRupiah(product.price)}</p>
 
-        <div className="mt-2 flex flex-wrap items-center gap-x-1" role="group" aria-label={`Pilihan warna ${product.name}`}>
-          {product.colors.map((c, i) => (
-            <button
-              key={c.name}
-              type="button"
-              onClick={() => setColorIndex(i)}
-              aria-pressed={i === colorIndex}
-              aria-label={`Warna ${c.name}`}
-              title={c.name}
-              className="flex h-9 w-9 items-center justify-center rounded-full"
-            >
-              <span
-                className={cn(
-                  "h-6 w-6 rounded-full border border-ink/15 transition",
-                  i === colorIndex ? "ring-2 ring-brown ring-offset-2 ring-offset-cream" : "hover:scale-110",
-                )}
-                style={{ backgroundColor: c.hex }}
-              />
-            </button>
-          ))}
-          <span className="w-full pl-1 text-sm text-ink-soft sm:ml-1 sm:w-auto sm:pl-0">{color.name}</span>
+          <div className="mt-2 flex flex-wrap items-center gap-x-1" role="group" aria-label={`Pilihan warna ${product.name}`}>
+            {product.colors.map((c, i) => (
+              <button
+                key={c.name}
+                type="button"
+                onClick={() => setColorIndex(i)}
+                aria-pressed={i === colorIndex}
+                aria-label={`Warna ${c.name}`}
+                title={c.name}
+                className="flex h-9 w-9 items-center justify-center rounded-full"
+              >
+                <span
+                  className={cn(
+                    "h-6 w-6 rounded-full border border-ink/15 transition",
+                    i === colorIndex ? "ring-2 ring-brown ring-offset-2 ring-offset-cream" : "hover:scale-110",
+                  )}
+                  style={{ backgroundColor: c.hex }}
+                />
+              </button>
+            ))}
+            <span className="w-full pl-1 text-sm text-ink-soft sm:ml-1 sm:w-auto sm:pl-0">{color.name}</span>
+          </div>
         </div>
       </div>
     </article>

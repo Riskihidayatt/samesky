@@ -1,6 +1,6 @@
 export type CollectionId = "everyday" | "dusk" | "midnight" | "little-sky";
 
-export type GarmentKind = "tee" | "polo" | "shirt" | "crewneck" | "hoodie";
+export type GarmentKind = "tee" | "polo" | "shirt" | "crewneck" | "hoodie" | "jacket" | "bag";
 
 export type ProductColor = {
   name: string;

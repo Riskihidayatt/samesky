@@ -31,13 +31,14 @@
 | Semua 11 section landing page | Done | Hero → Footer sesuai brief |
 | Langit hero ikut waktu lokal + switcher manual | Done, tested | `getSkyPhase` di `shared/lib/sky.ts` |
 | Best Sellers (swatch, hover tampak belakang, quick add) | Done, tested | `ProductCard.test.tsx`; 8 produk = `bestSellers` |
-| New Arrivals (carousel scroll-snap, 5 produk) | Done, tested | `newArrival: true` di `products.data.ts`; section ini yang punya anchor `#shop`, Best Sellers = `#best-sellers` |
+| New Arrivals (carousel scroll-snap, 10 produk: kemeja, kaos, jaket, tas) | Done, tested | `newArrival: true` di `products.data.ts`; section ini yang punya anchor `#shop`, Best Sellers = `#best-sellers` |
 | Keranjang (drawer, qty, empty state maskot, persist) | Done, tested | Checkout belum terhubung (demo) |
 | Pencarian produk (dialog) | Done, tested | filter lokal dari `products.data.ts` |
 | Newsletter form + `POST /api/newsletter` | Done, tested | Belum disimpan ke ESP |
 | 404 & loading dengan maskot | Done | |
 
 ## 5. Yang sedang dikerjakan sesi ini
+- Sesi 6: tambah 5 produk New Arrivals (Different Streets Denim Jacket, Dusk Dreamer Bomber, Dawn Windbreaker, Wanderer Sling Bag, Commuter Backpack); GarmentKind + `jacket`, `bag`. `frame-product-photo.sh` kini menerima geometri crop eksplisit (untuk mockup 3 tampilan + caption, dipakai: front `470x650+0+0`, back `440x650+936+0`). ProductCard: harga+swatch dibungkus `mt-auto` agar sejajar walau nama 2 baris. 58 test lulus.
 - Sesi 5: maskot HD (EDSR 4x). Hero: pose ikut fase langit (pagi=wave, senja=gaze/Sunset Watching, malam=sleep/Dreaming) via `phasePose` di `Hero.tsx`; matahari/bulan CSS di `SkyBackdrop` disembunyikan saat senja & malam karena artwork sudah punya sendiri. `CloudDivider` sekarang digenerate (bump merata 0..1440). 57 test lulus.
 - Sesi 4: maskot placeholder SVG diganti potongan resmi dari character sheet (`public/mascot/*.webp`, latar transparan, glow dipertahankan sebagai semi-transparan). Logo = kepala maskot melambai (`public/brand/logo-mark.webp`) + wordmark; favicon `src/app/icon.png`. Registry `mascot.ts` sekarang menyimpan width/height asli tiap pose.
 - Sesi 3: perbaikan presisi: semua foto produk diseragamkan, kartu produk selalu menyediakan baris catatan agar harga/swatch sejajar, carousel New Arrivals dikunci ke lebar container (4 kartu pas), placeholder siluet diganti. 54 test lulus.

@@ -61,7 +61,7 @@ public/
 |---|---|
 | **Maskot** | Sudah memakai potongan dari character sheet resmi. Untuk versi lebih tajam, ganti file di `public/mascot/` dengan ekspor resolusi 2–3x (latar transparan) dan sesuaikan `width`/`height` di `src/shared/config/mascot.ts`. Pose: `wave` (Waving), `walk` (Walking), `sleep` (Dreaming), `gaze` (Sunset Watching). |
 | **Logo** | `src/shared/components/Logo.tsx`: ikon `public/brand/logo-mark.webp` + wordmark teks. Favicon: `src/app/icon.png` & `apple-icon.png`. |
-| **Foto produk baru** | Jalankan `scripts/frame-product-photo.sh <mockup> <nama-depan> <nama-belakang>` untuk mockup berdampingan (depan kiri, belakang kanan). Hasilnya otomatis seukuran dan selatar dengan foto lain. |
+| **Foto produk baru** | Jalankan `scripts/frame-product-photo.sh <mockup> <nama-depan> <nama-belakang>` untuk mockup berdampingan (depan kiri, belakang kanan). Untuk layout lain (mis. 3 tampilan dengan caption), beri area crop sendiri: `scripts/frame-product-photo.sh <mockup> 470x650+0+0 <nama-depan> 440x650+936+0 <nama-belakang>`. Hasilnya otomatis seukuran dan selatar dengan foto lain. |
 | **Produk** | `src/features/products/products.data.ts`. Set `newArrival: true` agar tampil di New Arrivals, selain itu masuk Best Sellers. Warna tanpa `images` otomatis memakai ilustrasi siluet berwarna. |
 | **Lookbook / Community** | Tambahkan `src` pada tiap entri di `Lookbook.tsx` / `Community.tsx`; tanpa `src` tampil placeholder gradien. |
 | **Kontak & sosmed** | `src/shared/config/site.ts` (nomor WhatsApp masih placeholder). |

@@ -15,6 +15,13 @@ describe("searchProducts", () => {
     expect(searchProducts("heather").map((p) => p.id)).toEqual(["everyday-crewneck"]);
   });
 
+  it("finds the new bags and jackets", () => {
+    expect(searchProducts("bag").map((p) => p.id)).toEqual(["wanderer-sling-bag"]);
+    expect(searchProducts("jacket").map((p) => p.id)).toEqual(["different-streets-denim-jacket"]);
+    // "Backpack Brown" is also a colour of the Everyday Polo, so both match.
+    expect(searchProducts("backpack").map((p) => p.id)).toEqual(["everyday-polo", "commuter-backpack"]);
+  });
+
   it("returns nothing for unknown terms", () => {
     expect(searchProducts("sepatu")).toEqual([]);
   });

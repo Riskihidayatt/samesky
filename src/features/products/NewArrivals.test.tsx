@@ -4,7 +4,7 @@ import { NewArrivals } from "./NewArrivals";
 import { bestSellers, newArrivals, products } from "./products.data";
 
 describe("product lists", () => {
-  it("splits the catalogue into 8 best sellers and the new arrivals", () => {
+  it("splits the catalogue into 8 best sellers and 10 new arrivals", () => {
     expect(bestSellers).toHaveLength(8);
     expect(newArrivals.map((p) => p.id)).toEqual([
       "sky-friends-camp-shirt",
@@ -12,6 +12,11 @@ describe("product lists", () => {
       "sunrise-linen-shirt",
       "under-the-same-sky-tee",
       "for-new-beginnings-tee",
+      "different-streets-denim-jacket",
+      "dusk-dreamer-bomber",
+      "dawn-windbreaker",
+      "wanderer-sling-bag",
+      "commuter-backpack",
     ]);
     expect(bestSellers.length + newArrivals.length).toBe(products.length);
   });

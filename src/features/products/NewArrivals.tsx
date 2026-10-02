@@ -45,7 +45,7 @@ export function NewArrivals() {
               align="left"
               eyebrow="New Arrivals"
               title="Baru turun dari langit"
-              description="Kemeja camp, motif Mega Mendung, dan kaos grafis terbaru untuk menemani langkah berikutnya."
+              description="Jaket, tas, kemeja, dan kaos grafis terbaru untuk menemani langkah berikutnya."
             />
           </Reveal>
           <div className="flex gap-2">
