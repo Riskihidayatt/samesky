@@ -4,6 +4,7 @@ import { cn } from "@/shared/lib/cn";
 
 type MascotProps = {
   pose: MascotPose;
+  /** Rendered width in px; height follows the artwork's aspect ratio. */
   size?: number;
   className?: string;
   /** Gentle up-and-down floating (disabled automatically for reduced motion). */
@@ -14,15 +15,15 @@ type MascotProps = {
 };
 
 export function Mascot({ pose, size = 240, className, float, preload, decorative }: MascotProps) {
-  const { src, alt } = mascotPoses[pose];
+  const { src, alt, width, height } = mascotPoses[pose];
   return (
     <Image
       src={src}
       alt={decorative ? "" : alt}
       width={size}
-      height={size}
+      height={Math.round((size * height) / width)}
       preload={preload}
-      // SVG placeholders don't benefit from the optimizer; real PNG/WebP art will.
+      sizes={`${size}px`}
       unoptimized={src.endsWith(".svg")}
       className={cn("select-none", float && "animate-float", className)}
       draggable={false}

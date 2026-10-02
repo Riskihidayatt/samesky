@@ -1,11 +1,12 @@
-import { Cloud } from "lucide-react";
+import Image from "next/image";
+import { logoMark } from "@/shared/config/mascot";
 import { cn } from "@/shared/lib/cn";
 
-/** Text wordmark. Swap the inner content for an <Image> once the official logo file exists. */
+/** Mascot mark + wordmark. The mark is decorative; links using the logo carry their own aria-label. */
 export function Logo({ className, tone = "dark" }: { className?: string; tone?: "dark" | "light" }) {
   return (
     <span className={cn("inline-flex items-center gap-2 font-display text-xl font-semibold tracking-[0.14em]", tone === "dark" ? "text-midnight" : "text-cream", className)}>
-      <Cloud aria-hidden className={cn("h-6 w-6", tone === "dark" ? "fill-dawn-soft text-brown" : "fill-cream/20 text-dusk")} strokeWidth={1.8} />
+      <Image src={logoMark.src} alt="" width={logoMark.width} height={logoMark.height} sizes="56px" className="h-9 w-auto" />
       SAMESKY
     </span>
   );

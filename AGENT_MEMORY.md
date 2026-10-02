@@ -11,7 +11,7 @@
 ## 2. Keputusan Arsitektur (jangan diubah tanpa diskusi eksplisit)
 - Feature-based folder (`src/features/<fitur>`) + `src/shared` untuk komponen/hook/lib lintas fitur.
 - Tidak ada `tailwind.config.*`: Tailwind v4 memakai `@theme` di `globals.css`. Warna brand: `cream`, `dawn`, `dusk`, `midnight`, `brown`, `ink` (+ varian `-soft`, `-deep`, `-mist`).
-- Maskot diakses lewat registry `src/shared/config/mascot.ts` + komponen `<Mascot pose=...>`, jangan hardcode path gambar maskot.
+- Maskot diakses lewat registry `src/shared/config/mascot.ts` (src + width/height asli) + komponen `<Mascot pose=... size=...>` (size = lebar, tinggi ikut rasio), jangan hardcode path gambar maskot.
 - Fase langit (morning/dusk/night) dari `SkyProvider`; SSR selalu "morning", client sync ke jam lokal setelah mount (hindari hydration mismatch).
 - Keranjang: `useReducer` + Context, disimpan di localStorage key `samesky-cart-v1`; data dari storage divalidasi di reducer (`hydrate`).
 - Validasi email dipakai bersama oleh form (client) dan API (server): `src/shared/lib/validation.ts`.
@@ -38,13 +38,14 @@
 | 404 & loading dengan maskot | Done | |
 
 ## 5. Yang sedang dikerjakan sesi ini
+- Sesi 4: maskot placeholder SVG diganti potongan resmi dari character sheet (`public/mascot/*.webp`, latar transparan, glow dipertahankan sebagai semi-transparan). Logo = kepala maskot melambai (`public/brand/logo-mark.webp`) + wordmark; favicon `src/app/icon.png`. Registry `mascot.ts` sekarang menyimpan width/height asli tiap pose.
 - Sesi 3: perbaikan presisi: semua foto produk diseragamkan, kartu produk selalu menyediakan baris catatan agar harga/swatch sejajar, carousel New Arrivals dikunci ke lebar container (4 kartu pas), placeholder siluet diganti. 54 test lulus.
 - Sesi 2: tambah 5 produk baru (Sky Friends Camp Shirt, Mega Mendung Shirt, Sunrise Linen Shirt, Under the Same Sky Tee, For New Beginnings Tee) + section New Arrivals. 52 test lulus.
 - Selesai: setup project, semua section, tests, lint + typecheck bersih, build produksi sukses.
-- Next step: ganti maskot placeholder dengan file asli dari character sheet user (pose Waving, Walking, Dreaming, Sunset Watching), foto lookbook/community asli, sambungkan newsletter ke penyedia email, checkout.
+- Next step: foto lookbook/community asli, sambungkan newsletter ke penyedia email, checkout.
 
 ## 6. Known issues / hutang teknis
-- Maskot di `public/mascot/*.svg` masih PLACEHOLDER buatan (bukan artwork asli). Prioritas: tinggi.
+- Maskot sudah artwork resmi (dipotong dari character sheet user, ~300px). Resolusi masih rendah untuk hero di layar retina; minta ekspor 2–3x bila ada. Prioritas: rendah.
 - Lookbook & Community masih placeholder gradien (field `src` kosong). Prioritas: sedang.
 - Everyday Polo, Little Sky Kids Tee, Little Sky Family Set, dan beberapa swatch warna belum punya foto; tampil sebagai `GarmentPlaceholder` (lingkaran warna + maskot + label "Foto segera hadir"). Prioritas: sedang.
 - `/api/newsletter` belum ada rate limiting dan belum meneruskan email ke provider. Prioritas: sedang (wajib sebelum production).
