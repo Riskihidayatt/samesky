@@ -41,6 +41,20 @@ describe("ProductCard", () => {
     expect(toggle).toHaveAttribute("aria-pressed", "true");
   });
 
+  it("shows the 'foto segera hadir' placeholder for a colour without photos", async () => {
+    setup();
+    await userEvent.click(screen.getByRole("button", { name: "Warna Midnight Navy" }));
+    expect(screen.getAllByRole("img", { name: /warna Midnight Navy, tampak depan \(foto segera hadir\)/ })).toHaveLength(1);
+  });
+
+  it("reserves the note line even when a product has no note, keeping rows aligned", () => {
+    setup();
+    const heading = screen.getByRole("heading", { name: "Everyday Logo Tee" });
+    const note = heading.nextElementSibling as HTMLElement;
+    expect(note.tagName).toBe("P");
+    expect(note).toHaveClass("min-h-[1.375rem]");
+  });
+
   it("adds the selected colour to the cart and opens the drawer", async () => {
     setup();
     await userEvent.click(screen.getByRole("button", { name: "Warna Dawn Blue" }));

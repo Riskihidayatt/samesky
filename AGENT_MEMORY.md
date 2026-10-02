@@ -38,6 +38,7 @@
 | 404 & loading dengan maskot | Done | |
 
 ## 5. Yang sedang dikerjakan sesi ini
+- Sesi 3: perbaikan presisi: semua foto produk diseragamkan, kartu produk selalu menyediakan baris catatan agar harga/swatch sejajar, carousel New Arrivals dikunci ke lebar container (4 kartu pas), placeholder siluet diganti. 54 test lulus.
 - Sesi 2: tambah 5 produk baru (Sky Friends Camp Shirt, Mega Mendung Shirt, Sunrise Linen Shirt, Under the Same Sky Tee, For New Beginnings Tee) + section New Arrivals. 52 test lulus.
 - Selesai: setup project, semua section, tests, lint + typecheck bersih, build produksi sukses.
 - Next step: ganti maskot placeholder dengan file asli dari character sheet user (pose Waving, Walking, Dreaming, Sunset Watching), foto lookbook/community asli, sambungkan newsletter ke penyedia email, checkout.
@@ -45,12 +46,12 @@
 ## 6. Known issues / hutang teknis
 - Maskot di `public/mascot/*.svg` masih PLACEHOLDER buatan (bukan artwork asli). Prioritas: tinggi.
 - Lookbook & Community masih placeholder gradien (field `src` kosong). Prioritas: sedang.
-- 4 produk/warna belum punya foto (pakai `GarmentPlaceholder`). Prioritas: sedang.
+- Everyday Polo, Little Sky Kids Tee, Little Sky Family Set, dan beberapa swatch warna belum punya foto; tampil sebagai `GarmentPlaceholder` (lingkaran warna + maskot + label "Foto segera hadir"). Prioritas: sedang.
 - `/api/newsletter` belum ada rate limiting dan belum meneruskan email ke provider. Prioritas: sedang (wajib sebelum production).
 - Nomor WhatsApp di `site.ts` masih placeholder.
 
 ## 7. Hal yang perlu diketahui agent berikutnya
-- Foto produk di `public/images/products/` hasil crop dari mockup user (kiri = depan, kanan = belakang). Mockup kemeja (sky-friends, mega-mendung, sunrise-linen) dicrop selebar setengah gambar lalu di-pad ke 4:5 dengan warna latar.
+- Foto produk di `public/images/products/` WAJIB dibuat lewat `scripts/frame-product-photo.sh` (dari mockup berdampingan: kiri depan, kanan belakang). Script menyeragamkan ukuran garmen (box 520x610 di kanvas 600x750) dan latar `#E7E5E1` = token `bg-photo`. Jangan crop manual, nanti ukuran/latar tidak konsisten.
 - Produk baru masuk Best Sellers atau New Arrivals lewat flag `newArrival`; jangan buat array terpisah.
 - Env var opsional: `NEXT_PUBLIC_SITE_URL` (untuk metadataBase/Open Graph). Lihat `.env.example`.
 - Jalankan `npm run lint && npm run typecheck && npm test && npm run build` sebelum menutup sesi.

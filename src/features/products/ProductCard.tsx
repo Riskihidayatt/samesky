@@ -28,7 +28,6 @@ export function ProductCard({ product }: { product: Product }) {
       />
     ) : (
       <GarmentPlaceholder
-        kind={product.kind}
         color={color.hex}
         side={side}
         label={`Ilustrasi ${product.name} warna ${color.name}, tampak ${side === "front" ? "depan" : "belakang"}`}
@@ -94,7 +93,8 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="mt-4 flex flex-1 flex-col px-1">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brown">{collectionLabels[product.collection]}</p>
         <h3 className="mt-1 font-sans text-base font-semibold text-midnight sm:text-lg">{product.name}</h3>
-        {product.note && <p className="text-sm text-ink-soft">{product.note}</p>}
+        {/* Always reserve the note line so price and swatches line up across a row. */}
+        <p className="min-h-[1.375rem] text-sm leading-[1.375rem] text-ink-soft">{product.note ?? "\u00a0"}</p>
         <p className="mt-1 font-semibold text-ink">{formatRupiah(product.price)}</p>
 
         <div className="mt-2 flex flex-wrap items-center gap-x-1" role="group" aria-label={`Pilihan warna ${product.name}`}>
