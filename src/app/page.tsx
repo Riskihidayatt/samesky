@@ -5,6 +5,7 @@ import { Highlights } from "@/features/highlights/Highlights";
 import { Lookbook } from "@/features/lookbook/Lookbook";
 import { Newsletter } from "@/features/newsletter/Newsletter";
 import { BestSellers } from "@/features/products/BestSellers";
+import { NewArrivals } from "@/features/products/NewArrivals";
 import { BrandStory } from "@/features/story/BrandStory";
 import { Testimonials } from "@/features/testimonials/Testimonials";
 import { Footer } from "@/shared/components/Footer";
@@ -18,6 +19,7 @@ export default function HomePage() {
         <Hero />
         <Highlights />
         <Collections />
+        <NewArrivals />
         <BestSellers />
         <BrandStory />
         <Lookbook />

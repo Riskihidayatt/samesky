@@ -27,7 +27,8 @@ const groups = [
     links: [
       { label: "Our Story", href: "/#story" },
       { label: "Community", href: "/#community" },
-      { label: "Best Sellers", href: "/#shop" },
+      { label: "New Arrivals", href: "/#shop" },
+      { label: "Best Sellers", href: "/#best-sellers" },
     ],
   },
 ];

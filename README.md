@@ -36,7 +36,7 @@ src/
 │   ├── hero/                 # Hero + SkyBackdrop (langit ikut jam lokal)
 │   ├── highlights/           # 4 keunggulan
 │   ├── collections/          # 4 kartu koleksi
-│   ├── products/             # data produk, ProductCard, BestSellers, GarmentPlaceholder
+│   ├── products/             # data produk, ProductCard, NewArrivals, BestSellers, GarmentPlaceholder
 │   ├── story/                # Brand Story + ilustrasi maskot berjalan
 │   ├── lookbook/  community/  testimonials/
 │   ├── newsletter/           # Sky Club + form
@@ -59,7 +59,7 @@ public/
 |---|---|
 | **Maskot** | Taruh file asli (PNG/WebP transparan disarankan) di `public/mascot/`, lalu ubah `src` di `src/shared/config/mascot.ts`. Pose: `wave` (Waving), `walk` (Walking), `sleep` (Dreaming), `gaze` (Sunset Watching). |
 | **Logo** | `src/shared/components/Logo.tsx`, saat ini berupa wordmark teks. |
-| **Produk** | `src/features/products/products.data.ts`. Warna tanpa `images` otomatis memakai ilustrasi siluet berwarna. |
+| **Produk** | `src/features/products/products.data.ts`. Set `newArrival: true` agar tampil di New Arrivals, selain itu masuk Best Sellers. Warna tanpa `images` otomatis memakai ilustrasi siluet berwarna. |
 | **Lookbook / Community** | Tambahkan `src` pada tiap entri di `Lookbook.tsx` / `Community.tsx`; tanpa `src` tampil placeholder gradien. |
 | **Kontak & sosmed** | `src/shared/config/site.ts` (nomor WhatsApp masih placeholder). |
 

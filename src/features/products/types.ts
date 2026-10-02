@@ -1,6 +1,6 @@
 export type CollectionId = "everyday" | "dusk" | "midnight" | "little-sky";
 
-export type GarmentKind = "tee" | "polo" | "crewneck" | "hoodie";
+export type GarmentKind = "tee" | "polo" | "shirt" | "crewneck" | "hoodie";
 
 export type ProductColor = {
   name: string;
@@ -18,4 +18,6 @@ export type Product = {
   badge?: "New" | "Best Seller";
   colors: ProductColor[];
   note?: string;
+  /** Shown in the New Arrivals row instead of the Best Sellers grid. */
+  newArrival?: boolean;
 };

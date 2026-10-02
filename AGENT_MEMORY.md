@@ -1,7 +1,7 @@
 # AGENT MEMORY — SAMESKY Landing Page
 
 > File ini WAJIB dibaca AI agent di awal sesi kerja, dan WAJIB diupdate di akhir sesi setelah fitur selesai+ditest.
-> Terakhir diupdate: 2026-10-02 oleh sesi: pembuatan awal landing page (greenfield).
+> Terakhir diupdate: 2026-10-02 oleh sesi: tambah produk New Arrivals.
 
 ## 1. Ringkasan Project
 - Landing page brand pakaian lokal Indonesia "SAMESKY" (tagline: "Different streets, same sky."). Target pasar lintas usia, tone hangat, Bahasa Indonesia + sedikit English.
@@ -30,14 +30,16 @@
 |---|---|---|
 | Semua 11 section landing page | Done | Hero → Footer sesuai brief |
 | Langit hero ikut waktu lokal + switcher manual | Done, tested | `getSkyPhase` di `shared/lib/sky.ts` |
-| Best Sellers (swatch, hover tampak belakang, quick add) | Done, tested | `ProductCard.test.tsx` |
+| Best Sellers (swatch, hover tampak belakang, quick add) | Done, tested | `ProductCard.test.tsx`; 8 produk = `bestSellers` |
+| New Arrivals (carousel scroll-snap, 5 produk) | Done, tested | `newArrival: true` di `products.data.ts`; section ini yang punya anchor `#shop`, Best Sellers = `#best-sellers` |
 | Keranjang (drawer, qty, empty state maskot, persist) | Done, tested | Checkout belum terhubung (demo) |
 | Pencarian produk (dialog) | Done, tested | filter lokal dari `products.data.ts` |
 | Newsletter form + `POST /api/newsletter` | Done, tested | Belum disimpan ke ESP |
 | 404 & loading dengan maskot | Done | |
 
 ## 5. Yang sedang dikerjakan sesi ini
-- Selesai: setup project, semua section, tests (49 test lulus), lint + typecheck bersih, build produksi sukses.
+- Sesi 2: tambah 5 produk baru (Sky Friends Camp Shirt, Mega Mendung Shirt, Sunrise Linen Shirt, Under the Same Sky Tee, For New Beginnings Tee) + section New Arrivals. 52 test lulus.
+- Selesai: setup project, semua section, tests, lint + typecheck bersih, build produksi sukses.
 - Next step: ganti maskot placeholder dengan file asli dari character sheet user (pose Waving, Walking, Dreaming, Sunset Watching), foto lookbook/community asli, sambungkan newsletter ke penyedia email, checkout.
 
 ## 6. Known issues / hutang teknis
@@ -48,6 +50,7 @@
 - Nomor WhatsApp di `site.ts` masih placeholder.
 
 ## 7. Hal yang perlu diketahui agent berikutnya
-- Foto produk di `public/images/products/` hasil crop dari mockup user (kiri = depan, kanan = belakang).
+- Foto produk di `public/images/products/` hasil crop dari mockup user (kiri = depan, kanan = belakang). Mockup kemeja (sky-friends, mega-mendung, sunrise-linen) dicrop selebar setengah gambar lalu di-pad ke 4:5 dengan warna latar.
+- Produk baru masuk Best Sellers atau New Arrivals lewat flag `newArrival`; jangan buat array terpisah.
 - Env var opsional: `NEXT_PUBLIC_SITE_URL` (untuk metadataBase/Open Graph). Lihat `.env.example`.
 - Jalankan `npm run lint && npm run typecheck && npm test && npm run build` sebelum menutup sesi.

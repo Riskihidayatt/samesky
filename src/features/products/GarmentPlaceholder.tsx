@@ -45,7 +45,7 @@ export function GarmentPlaceholder({ kind, color, side, label }: GarmentPlacehol
         ) : (
           <path d="M114 66 Q150 18 186 66 Q170 112 150 114 Q130 112 114 66Z" fill={color} stroke="#000" strokeOpacity="0.16" strokeWidth="2" />
         ))}
-      {kind === "polo" && side === "front" && (
+      {(kind === "polo" || kind === "shirt") && side === "front" && (
         <>
           <path d="M128 58 L142 90 L150 70 Z M172 58 L158 90 L150 70 Z" fill={color} stroke="#000" strokeOpacity="0.2" strokeWidth="2" strokeLinejoin="round" />
           <path d="M150 72 v46" stroke="#000" strokeOpacity="0.16" strokeWidth="2" />
